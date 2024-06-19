@@ -4,7 +4,7 @@ package ecommerce;
 
 option go_package = "ecommerce.proto";
 
-import "protos-contract/proto/ecommerce/common.proto";
+import "ecommerce/common.proto";
 
 enum OrderStatus {
     PENDING = 0;
