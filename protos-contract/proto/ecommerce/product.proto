@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package ecommerce;
+
+option go_package = "ecommerce.proto";
+
+import "protos-contract/proto/ecommerce/common.proto";
+
+service ProductService {
+    rpc GetProducts(GetProductsRequest) returns (GetProductsResponse);
+    rpc GetProduct(GetProductRequest) returns (GetProductResponse);
+    rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse);
+    rpc UpdateProduct(UpdateProductRequest) returns (UpdateProductResponse);
+    rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
+}
+
+message GetProductsRequest {
+    string category = 1;
+    int32 page = 2;
+    int32 pageSize = 3;
+}
+
+message GetProductsResponse {
+    repeated Product products = 1;
+    int32 totalCount = 2;
+}
+
+message GetProductRequest {
+    string id = 1;
+}
+
+message GetProductResponse {
+    Product product = 1;
+}
+
+message CreateProductRequest {
+    string name = 1;
+    string description = 2;
+    float price = 3;
+    string category = 4;
+    int32 inventory = 5;
+}
+
+message CreateProductResponse {
+    Product product = 1;
+}
+
+message UpdateProductRequest {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    float price = 4;
+    string category = 5;
+    int32 inventory = 6;
+}
+
+message UpdateProductResponse {
+    Product product = 1;
+}
+
+message DeleteProductRequest {
+    string id = 1;
+}
+
+message DeleteProductResponse {
+    bool success = 1;
+}

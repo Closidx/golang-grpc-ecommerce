@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package ecommerce;
+
+option go_package = "ecommerce.proto";
+
+import "protos-contract/proto/ecommerce/common.proto";
+
+message Cart {
+    string id = 1;
+    string userId = 2;
+    repeated Product products = 3;
+    float totalPrice = 4;
+}
+
+service CartService {
+    rpc GetCart(GetCartRequest) returns (GetCartResponse);
+    rpc AddToCart(AddToCartRequest) returns (AddToCartResponse);
+    rpc RemoveFromCart(RemoveFromCartRequest) returns (RemoveFromCartResponse);
+    rpc UpdateCart(UpdateCartRequest) returns (UpdateCartResponse);
+}
+
+message GetCartRequest {
+    string userId = 1;
+}
+
+message GetCartResponse {
+    Cart cart = 1;
+}
+
+message AddToCartRequest {
+    string userId = 1;
+    string productId = 2;
+    int32 quantity = 3;
+}
+
+message AddToCartResponse {
+    Cart cart = 1;
+}
+
+message RemoveFromCartRequest {
+    string userId = 1;
+    string productId = 2;
+}
+
+message RemoveFromCartResponse {
+    Cart cart = 1;
+}
+
+message UpdateCartRequest {
+    string userId = 1;
+    repeated string productIds = 2;
+}
+
+message UpdateCartResponse {
+    Cart cart = 1;
+}
