@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package ecommerce;
+
+option go_package = "ecommerce.proto";
+
+import "ecommerce/cart.proto";
+import "ecommerce/order.proto";
+import "ecommerce/product.proto";
+
+service ProductService {
+  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse);
+  rpc GetProducts(GetProductsRequest) returns (GetProductsResponse);
+  rpc GetProduct(GetProductRequest) returns (GetProductResponse);
+  rpc UpdateProduct(UpdateProductRequest) returns (UpdateProductResponse);
+  rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
+}
+
+service OrderService {
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+  rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
+  rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse);
+  rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse);
+}
+
+service CartService {
+  rpc AddToCart(AddToCartRequest) returns (AddToCartResponse);
+  rpc GetCart(GetCartRequest) returns (GetCartResponse);
+  rpc RemoveFromCart(RemoveFromCartRequest) returns (RemoveFromCartResponse);
+}
