@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github/closidx/golang-grpc-ecommerce/ecommerce/internal/app"
 	"github/closidx/golang-grpc-ecommerce/ecommerce/internal/config"
 	"log/slog"
 	"os"
@@ -18,6 +19,10 @@ func main() {
 	log := setupLogger(cfg.Env)
 
 	log.Info("starting application", slog.Any("cfg", cfg))
+
+	application := app.New(log, cfg.GRPC.Port, cfg.StoragePath)
+
+	application.GRPCSrv.MustRun()
 }
 
 func setupLogger(env string) *slog.Logger {
