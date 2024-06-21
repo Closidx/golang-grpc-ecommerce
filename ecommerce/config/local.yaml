@@ -1,5 +1,5 @@
 env: "local"
 storage_path: "./storage/.db"
 grpc:
-  port: 66666
+  port: 6666
   timeout: 10h
