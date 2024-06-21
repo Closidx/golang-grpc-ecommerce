@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package ecommerce;
 
-option go_package = "ecommerce.proto";
+option go_package = "closidx.ecommerce.v1;ecommercev1";
 
 import "ecommerce/product.proto";
 import "google/protobuf/timestamp.proto";
